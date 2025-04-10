@@ -4,8 +4,8 @@ defineEmits(["voteUp", "voteDown"]);
 </script>
 
 <template>
-  <span :class="{'post--trending': (votes>=10), 'post--spam':(votes<0) }">
-    <div class="post">
+  <div class="post">
+    <span :class="{ 'post--trending': votes >= 10, 'post--spam': votes < 0 }">
       <div class="post__votes voter">
         <button @click="$emit('voteUp', id)" class="voter__action">👍</button>
         <div class="voter__votes">
@@ -22,8 +22,8 @@ defineEmits(["voteUp", "voteDown"]);
           {{ text }}
         </div>
       </div>
-    </div>
-  </span>
+    </span>
+  </div>
 </template>
 
 <style>
