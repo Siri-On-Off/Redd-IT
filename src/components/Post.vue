@@ -1,6 +1,6 @@
 <script setup>
   defineProps(['votes', 'user', 'title', 'text'])
-  const emit = defineEmits(['voteUp', 'voteDown'])
+  defineEmits(['voteUp', 'voteDown'])
 </script>
 
 <template>
