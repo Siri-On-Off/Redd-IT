@@ -19,10 +19,12 @@ const posts = ref([
 <template>
   <div class="container">
     <Post
-        title="Der Titel dieses Posts"
-        text="Der Text dieses Posts"
-        user="redd-it-user-123"
-        votes="99"
+        v-for="post in posts"
+        :key="post.id"
+        :title="post.title"
+        :text="post.text"
+        :user="post.user"
+        :votes="post.votes"
     />
   </div>
 </template>

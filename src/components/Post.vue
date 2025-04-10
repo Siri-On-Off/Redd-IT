@@ -1,28 +1,30 @@
 <script setup>
+  defineProps(['votes', 'user', 'title', 'text'])
+  const emit = defineEmits(['voteUp', 'voteDown'])
 </script>
 
 <template>
   <div class="post">
     <div class="post__votes voter">
-      <button class="voter__action">
+      <button @click="$emit('voteUp')" class="voter__action">
         👍
       </button>
       <div class="voter__votes">
-        12
+        {{ votes }}
       </div>
-      <button class="voter__action">
+      <button @click="$emit('voteDown')" class="voter__action">
         👎
       </button>
     </div>
     <div class="post__content">
       <div class="post__user">
-        von Benutzername
+        von {{ user }}
       </div>
       <div class="post__title">
-        Post Titel
+        {{ title }}
       </div>
       <div class="post__text">
-        Post Text
+        {{ text }}
       </div>
     </div>
   </div>
