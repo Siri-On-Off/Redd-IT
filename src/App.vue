@@ -37,12 +37,13 @@ function voteDown (id) {
     <Post
         v-for="post in sortedPosts"
         :key="post.id"
+        :id="post.id"
         :title="post.title"
         :text="post.text"
         :user="post.user"
         :votes="post.votes"
-        @voteUp="voteUp(post.id)"
-        @voteDown="voteDown(post.id)"
+        @voteUp="voteUp"
+        @voteDown="voteDown"
     />
   </div>
 </template>

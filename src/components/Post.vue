@@ -1,33 +1,29 @@
 <script setup>
-  defineProps(['votes', 'user', 'title', 'text'])
-  defineEmits(['voteUp', 'voteDown'])
+defineProps(["votes", "user", "title", "text", "id"]);
+defineEmits(["voteUp", "voteDown"]);
 </script>
 
 <template>
-  <div class="post">
-    <div class="post__votes voter">
-      <button @click="$emit('voteUp')" class="voter__action">
-        👍
-      </button>
-      <div class="voter__votes">
-        {{ votes }}
+  <span :class="{'post--trending': (votes>=10), 'post--spam':(votes<0) }">
+    <div class="post">
+      <div class="post__votes voter">
+        <button @click="$emit('voteUp', id)" class="voter__action">👍</button>
+        <div class="voter__votes">
+          {{ votes }}
+        </div>
+        <button @click="$emit('voteDown', id)" class="voter__action">👎</button>
       </div>
-      <button @click="$emit('voteDown')" class="voter__action">
-        👎
-      </button>
-    </div>
-    <div class="post__content">
-      <div class="post__user">
-        von {{ user }}
-      </div>
-      <div class="post__title">
-        {{ title }}
-      </div>
-      <div class="post__text">
-        {{ text }}
+      <div class="post__content">
+        <div class="post__user">von {{ user }}</div>
+        <div class="post__title">
+          {{ title }}
+        </div>
+        <div class="post__text">
+          {{ text }}
+        </div>
       </div>
     </div>
-  </div>
+  </span>
 </template>
 
 <style>
@@ -43,7 +39,7 @@
 }
 
 .post--spam {
-  opacity: .25;
+  opacity: 0.25;
 }
 
 .post + .post {
@@ -51,7 +47,7 @@
 }
 
 .post__user {
-  font-size: .9rem;
+  font-size: 0.9rem;
   color: #666;
   margin-bottom: 10px;
 }
@@ -66,7 +62,7 @@
 .post__text {
   color: #666;
   line-height: 1.2;
-  font-size: .9rem;
+  font-size: 0.9rem;
 }
 
 .post__votes {
@@ -91,7 +87,7 @@
   border: none;
   cursor: pointer;
   font-size: 1.3rem;
-  transition: background .2s ease;
+  transition: background 0.2s ease;
   width: 30px;
   height: 30px;
   border-radius: 100%;
