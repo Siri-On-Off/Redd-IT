@@ -14,6 +14,11 @@ const posts = ref([
   { id: 8, title: faker.lorem.words(10), text: faker.lorem.paragraph(), user: faker.internet.userName(), votes: 3 },
   { id: 9, title: faker.lorem.words(10), text: faker.lorem.paragraph(), user: faker.internet.userName(), votes: 15 },
 ])
+
+function voteUp(id) {
+  
+}
+
 </script>
 
 <template>
@@ -25,6 +30,8 @@ const posts = ref([
         :text="post.text"
         :user="post.user"
         :votes="post.votes"
+        @voteUp="post.votes++"
+        @voteDown="post.votes--"
     />
   </div>
 </template>
